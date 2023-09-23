@@ -8,7 +8,7 @@ const incomeModel = db.model(
         type: String,
         required: true,
       },
-      type: {
+      cat: {
         type: String,
         required: true,
       },
