@@ -1,7 +1,7 @@
 const db = require("../config/db");
 
-const expenseModel = db.model(
-  "expense",
+const homeExpenseModel = db.model(
+  "homeExpense",
   new db.Schema(
     {
       name: {
@@ -35,4 +35,4 @@ const expenseModel = db.model(
   )
 );
 
-module.exports = expenseModel;
+module.exports = homeExpenseModel;
