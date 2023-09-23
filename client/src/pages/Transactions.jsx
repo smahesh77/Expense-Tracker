@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { HStack, VStack } from "@chakra-ui/react";
 import { Container, Text, Flex, Grid, GridItem } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
@@ -21,6 +21,18 @@ function Transactions() {
   const [incomeLocation, setIncomeLocation] = useState("");
 
   const{User} = useContext(AuthContext)
+
+  const {catCount, setCatCount} = useState({})
+
+  useEffect(()=>{
+    const data = {id:User.id}
+    apiClient.post("/user/getusercats", data).then((res) => {
+        console.log("got it");
+        console.log(res.data);
+      }).catch((err) => {
+        console.log(err);
+      });
+  },[])
 
   // Event handlers to update state variables
   const handleTitleChange = (e) => {

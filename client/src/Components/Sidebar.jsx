@@ -30,7 +30,7 @@ const Sidebar = () => {
                     <img src={del} />
                     <Text>Bucket List</Text>
                 </Tab>
-                <Tab flexDirection={'row'} justifyContent={'space-between'} w={150}>
+                <Tab flexDirection={'row'} justifyContent={'space-between'} w={150} onClick={() => navigate('/profilepage')}>
                     <img src={profile} />
                     <Text  mr={33}>Profile</Text>
                 </Tab>
