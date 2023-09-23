@@ -30,7 +30,7 @@ const Sidebar = () => {
                     <img src={pie}/>
                     <Text mr={10}>Analysis</Text>
                 </Tab>
-                <Tab flexDirection={'row'} justifyContent={'space-between'} w={150}>
+                <Tab onClick={() => navigate('/profilepage')} flexDirection={'row'} justifyContent={'space-between'} w={150}>
                     <img src={profile} />
                     <Text  mr={33}>Profile</Text>
                 </Tab>
