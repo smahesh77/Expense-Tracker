@@ -4,6 +4,7 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
 import Dashboard from './pages/Dashboard'
+import Transactions from './pages/Transactions'
 function App() {
 
   return (
@@ -11,7 +12,7 @@ function App() {
       <Navbar />
       <Flex>
         <Sidebar />
-        <Dashboard />
+      <Transactions/>
       </Flex>
     </div>
   )
