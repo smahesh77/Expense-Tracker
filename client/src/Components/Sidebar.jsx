@@ -31,7 +31,7 @@ const Sidebar = () => {
                       <img src={del}/>
                       <Text>Bucket List</Text>
                     </Tab>
-          <Tab onClick={()=>navigate('/profile')}>
+          <Tab onClick={()=>navigate('/profilepage')}>
             <img src={profile}/>
             <Text>Profile</Text>
           </Tab>

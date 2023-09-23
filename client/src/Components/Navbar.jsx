@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Container, Flex, Text, Center } from "@chakra-ui/react";
 import wavehand from "../assets/Waving Hand.svg";
@@ -9,6 +9,13 @@ import { HStack, VStack } from "@chakra-ui/react";
 import AuthContext from "../contexts/authContext";
 import { useNavigate } from "react-router-dom";
 const Navbar = () => {
+
+  useEffect(() => {
+    if(User.name== ""){
+      navigate('/')
+    }
+  },[]);
+
   const { User, setUser } = useContext(AuthContext);
   const navigate = useNavigate()
   const signOut = () => {

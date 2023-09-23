@@ -33,6 +33,28 @@ router.post("/create", async (req, res, next) => {
       amount,
     });
 
+    // Increment the corresponding category in the user document
+    switch (cat) {
+      case "Electricity":
+        user.Electricity += amount;
+        break;
+      case "food":
+        user.food += amount;
+        break;
+      case "Health":
+        user.Health += amount;
+        break;
+      case "Rent":
+        user.Rent += amount;
+        break;
+      case "Entertainment":
+        user.Entertainment += amount;
+        break;
+      default:
+        // Handle the default case or error as needed
+        break;
+    }
+
     user.expenses.push(newExpense);
 
     await Promise.all([user.save(), newExpense.save()]);
@@ -42,6 +64,7 @@ router.post("/create", async (req, res, next) => {
     next(error);
   }
 });
+
 
 // get user expenses
 router.post("/getuserexpens", async (req, res, next) => {

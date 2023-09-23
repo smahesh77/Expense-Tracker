@@ -7,6 +7,7 @@ import AuthContext from "../contexts/authContext";
 import apiClient from "../services/api-client";
 
 function Dashboard() {
+  const navigate = useNavigate();
   const labels = ["January", "February", "March", "April", "May", "June"];
   const data = {
     labels: labels,
@@ -28,6 +29,9 @@ function Dashboard() {
   const { User, setUser } = useContext(AuthContext);
 
   useEffect(() => {
+    if(User.name== ""){
+      navigate('/')
+    }
     const data = { id: User.id };
     apiClient
       .post("/user/getuserdata", data)

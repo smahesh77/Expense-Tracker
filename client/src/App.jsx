@@ -11,6 +11,7 @@ import { Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import Profile from './pages/profile'
 import AuthProvider from './services/authProvider'
+import ProfilePage from './pages/ProfilePage'
 function App() {
 
 
@@ -24,7 +25,7 @@ function App() {
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/transactions' element={<TransactionsPage></TransactionsPage>}></Route>
-        <Route path='/profile' element={<Profile></Profile>}></Route>
+        <Route path='/profilepage' element={<ProfilePage></ProfilePage>}></Route>
       </Routes>
     </AuthProvider>
   )
