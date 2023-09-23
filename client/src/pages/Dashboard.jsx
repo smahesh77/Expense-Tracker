@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Container, Text, Flex, Grid, GridItem } from "@chakra-ui/react";
+import Itembox from '../Components/Itembox';
+import { IoIosArrowRoundUp, IoIosArrowRoundDown } from "react-icons/io";
 import Chart from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import { useNavigate, Link } from "react-router-dom";
@@ -29,7 +31,7 @@ function Dashboard() {
   const { User, setUser } = useContext(AuthContext);
 
   useEffect(() => {
-    if(User.name== ""){
+    if (User.name == "") {
       navigate('/')
     }
     const data = { id: User.id };
@@ -49,63 +51,43 @@ function Dashboard() {
         console.log(err);
       });
   }, []);
-
+  let items = [
+    { id: "1", title: "Pizza", price: "20", category: "Food" },
+    { id: "2", title: "House Bills", price: "60", category: "Rent" }
+  ];
   return (
     <Grid
-      bgColor={"purple.50"}
-      h={"450"}
-      w={1000}
-      p={4}
-      ml={4}
-      mt={3}
-      templateRows="repeat(2, 1fr)"
-      templateColumns="repeat(5, 1fr)"
+      h={'450'} w={1000} p={4} ml={4} mt={3}
+      templateRows='repeat(2, 1fr)'
+      templateColumns='repeat(5, 1fr)'
       gap={4}
       borderRadius={10}
     >
-      <GridItem
-        colSpan={2}
-        bg="white"
-        borderRadius={10}
-        h={120}
-        w={200}
-        bgColor={"purple.300"}
-        flexDirection={"column"}
-        p={3}
-      >
-        <Text fontWeight={"bold"} fontSize={20}>
-          Your balance
-        </Text>
-        <Text>${User.balance}</Text>
+
+      <GridItem colSpan={2} bg='white' borderRadius={10} h={120} w={200} bgColor={'purple.300'} flexDirection={'column'} p={3} boxShadow={"9px 9px 18px #e6e6e6,-9px -9px 18px #ffffff"}>
+        <Text fontWeight={'bold'} fontSize={20} >Your balance</Text>
+        <Flex direction={'row'}>
+          <Text>${User.balance}</Text>
+          <IoIosArrowRoundUp size={25} />
+        </Flex>
       </GridItem>
-      <GridItem
-        colSpan={2}
-        bg="white"
-        borderRadius={10}
-        h={120}
-        w={200}
-        bgColor={"purple.200"}
-        ml={-10}
-        flexDirection={"column"}
-        p={3}
-      >
-        <Text fontWeight={"bold"} fontSize={20}>
-          Your expense
-        </Text>
-        <Text>$7,000</Text>
+      <GridItem colSpan={2} bg='white' borderRadius={10} h={120} w={200} bgColor={'purple.200'} ml={-10} flexDirection={'column'} p={3} boxShadow={"9px 9px 18px #e6e6e6,-9px -9px 18px #ffffff"}>
+        <Text fontWeight={'bold'} fontSize={20} >Your expense</Text>
+        <Flex direction={'row'}>
+          <Text>$7,000</Text>
+          <IoIosArrowRoundDown size={25} />
+        </Flex>
       </GridItem>
-      <GridItem
-        rowSpan={2}
-        colSpan={1}
-        bg="white"
-        borderRadius={10}
-        w={350}
-      ></GridItem>
-      <GridItem colSpan={4} bg="white" p={3} borderRadius={10} h={250} w={450}>
+      <GridItem rowSpan={2} colSpan={1} bg='white' borderRadius={10} w={350} flexDirection={'column'} align={'center'} justifyContent={'center'} p={4} boxShadow={"9px 9px 18px #e6e6e6,-9px -9px 18px #ffffff"} >
+        {items.map((i) => (
+          <Itembox title={i.title} price={i.price} category={i.category} />
+        ))}
+      </GridItem>
+      <GridItem colSpan={4} bg='white' p={3} borderRadius={10} h={250} w={450} boxShadow={"9px 9px 18px #e6e6e6,-9px -9px 18px #ffffff"}>
         <Bar data={data} />
       </GridItem>
     </Grid>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard

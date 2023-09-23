@@ -7,39 +7,38 @@ import edit from '../assets/Note_Edit.svg'
 import del from '../assets/del_alt_fill.svg'
 import profile from '../assets/User_02.svg'
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../contexts/authContext';
 const Sidebar = () => {
-  const navigate = useNavigate()
-    
-    return (
-     
-            <Tabs   align='center' size='lg'  orientation="vertical">
-                <TabList  >
-                    <Tab  onClick={()=>navigate('/home')}>
-                        
-                       <img src={dashboard}/>
-                       <Text>&nbsp;Dashboard</Text>
-                      
-                       
-                    </Tab>
-                    <Tab onClick={()=>navigate('/transactions')}>
-                     <img src={edit}/>
-                     <Text >&nbsp;Transactions</Text>
-                    </Tab>
+    const navigate = useNavigate()
 
-                    <Tab>
-                      <img src={del}/>
-                      <Text>Bucket List</Text>
-                    </Tab>
-          <Tab onClick={()=>navigate('/profilepage')}>
-            <img src={profile}/>
-            <Text>Profile</Text>
-          </Tab>
-                </TabList>
-            </Tabs>
-      
-        
-           
+    return (
+
+        <Tabs size='lg' orientation="vertical" minWidth={180} >
+            <TabList  >
+                <Tab onClick={() => navigate('/home')} flexDirection={'row'} justifyContent={'space-between'} w={150}>
+
+                    <img src={dashboard} />
+                    <Text>&nbsp;Dashboard</Text>
+
+
+                </Tab>
+                <Tab onClick={() => navigate('/transactions')} flexDirection={'row'} justifyContent={'space-between'} w={150}>
+                    <img src={edit} />
+                    <Text >&nbsp;Transactions</Text>
+                </Tab>
+
+                <Tab flexDirection={'row'} justifyContent={'space-between'} w={150}>
+                    <img src={del} />
+                    <Text>Bucket List</Text>
+                </Tab>
+                <Tab flexDirection={'row'} justifyContent={'space-between'} w={150}>
+                    <img src={profile} />
+                    <Text  mr={33}>Profile</Text>
+                </Tab>
+            </TabList>
+        </Tabs>
+
+
+
     )
 }
 
