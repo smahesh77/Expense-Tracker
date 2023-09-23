@@ -8,12 +8,32 @@ import { Button, ButtonGroup } from "@chakra-ui/react";
 import { HStack, VStack } from "@chakra-ui/react";
 import AuthContext from "../contexts/authContext";
 import { useNavigate } from "react-router-dom";
+import apiClient from "../services/api-client";
 const Navbar = () => {
 
   useEffect(() => {
-    if(User.name== ""){
-      navigate('/')
-    }
+    apiClient
+      .get("user/logcheck", {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        }
+      })
+      .then((res) => {
+        console.log(res.data);
+        if(res.data != 'error')
+        setUser({
+          id: res.data.id,
+          name: res.data.name,
+          token: res.data.token,
+          balance:res.data.user.balance,
+          debt:res.data.user.debt,
+          status: true,
+          gmail:res.data.gmail
+        });
+      }).catch((err) => {console.log(err);
+      });
+     
+      
   },[]);
 
   const { User, setUser } = useContext(AuthContext);

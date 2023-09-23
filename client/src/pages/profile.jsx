@@ -1,8 +1,10 @@
 import { Container, Flex, Text, Image, Input, Button, Box, HStack } from '@chakra-ui/react'
-import React from 'react'
+import React, { useContext, useEffect } from "react";
 import { BsPencilFill } from 'react-icons/bs';
-import { FaCamera } from "react-icons/fa";
+import { FaCamera } from "react-icons/fa"
+import AuthContext from "../contexts/authContext";;
 const Profile = () => {
+    const { User, setUser } = useContext(AuthContext);
     return (
         <Flex h={450} w={1000} borderRadius={10} mt={4} ml={5} bgColor={'purple.50'} p={4}>
             <Flex direction={'column'}>
@@ -17,14 +19,14 @@ const Profile = () => {
                     <Flex direction={'column'} mr={100} ml={50}>
                         <Text as='b'>First Name:</Text>
                         <HStack>
-                            <Text>Jordan</Text>
+                            <Text>{User.name}</Text>
                             <Button leftIcon={<BsPencilFill />} colorScheme="purple" variant="ghost"/>
                         </HStack>
                     </Flex>
                     <Flex direction={'column'}>
                         <Text as='b'>Last Name:</Text>
                         <HStack>
-                            <Text>killian </Text>
+                            <Text>Smith </Text>
                             <Button leftIcon={<BsPencilFill />} colorScheme="purple" variant="ghost" />
                         </HStack>
                     </Flex>
@@ -41,7 +43,7 @@ const Profile = () => {
                     <Flex direction={'column'} >
                         <Text as='b'>Email:</Text>
                         <HStack>
-                            <Text>jordk@gmail.com</Text>
+                            <Text>{User.email}</Text>
                             
                         </HStack>
                     

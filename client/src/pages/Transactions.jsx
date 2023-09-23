@@ -22,6 +22,18 @@ function Transactions() {
 
   const{User} = useContext(AuthContext)
 
+  const {catCount, setCatCount} = useState({})
+
+  useEffect(()=>{
+    const data = {id:User.id}
+    apiClient.post("/user/getusercats", data).then((res) => {
+        console.log("got it");
+        console.log(res.data);
+      }).catch((err) => {
+        console.log(err);
+      });
+  },[])
+
   // Event handlers to update state variables
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
