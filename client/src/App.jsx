@@ -4,6 +4,7 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
 import Dashboard from './pages/Dashboard'
+import Bucketlist from './pages/Bucketlist'
 function App() {
 
   return (
@@ -11,7 +12,7 @@ function App() {
       <Navbar />
       <Flex>
         <Sidebar />
-        <Dashboard />
+        <Bucketlist />
       </Flex>
     </div>
   )

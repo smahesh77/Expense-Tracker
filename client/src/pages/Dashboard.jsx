@@ -32,7 +32,7 @@ function Dashboard() {
     >
    
       <GridItem colSpan={2} bg='white' borderRadius={10} h={120} w={200} bgColor={'purple.300'} flexDirection={'column'} p={3} >
-        <Text fontWeight={'bold'} fontSize={20} >Your income</Text>
+        <Text fontWeight={'bold'} fontSize={20} >Your balance</Text>
         <Text>$17,000</Text>
       </GridItem>
       <GridItem colSpan={2} bg='white' borderRadius={10} h={120} w={200} bgColor={'purple.200'} ml={-10} flexDirection={'column'}  p={3}>
