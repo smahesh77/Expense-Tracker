@@ -7,14 +7,13 @@ import Dashboard from './pages/Dashboard'
 import Bucketlist from './pages/Bucketlist'
 function App() {
 
- return (
+  return (
     <div className="App">
-     //test
-      <Routes>
-        <Route path='/' element={<Signin></Signin>}></Route>
-        <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/transactions' element={<TransactionsPage></TransactionsPage>}></Route>
-      </Routes>
+      <Navbar />
+      <Flex>
+        <Sidebar />
+        <Bucketlist />
+      </Flex>
     </div>
   )
 }
