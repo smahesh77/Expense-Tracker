@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Flex>
         <Sidebar />
-      <Transactions/>
+      <Dashboard/>
       </Flex>
     </div>
   )
