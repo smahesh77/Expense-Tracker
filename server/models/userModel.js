@@ -39,7 +39,7 @@ const userModel = db.model(
         type: Number,
         default: 0,
       },
-      food:{
+      Food:{
         type: Number,
         default: 0,
       },

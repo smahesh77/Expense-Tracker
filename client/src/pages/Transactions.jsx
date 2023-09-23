@@ -113,11 +113,11 @@ function Transactions() {
               onChange={handleCategoryChange}
               value={expenseCategory}
             >
-              <option value="electricity">Electricity</option>
-              <option value="rent">Rent</option>
-              <option value="health">Health</option>
-              <option value="entertaintment">Entertaintment</option>
-              <option value="food">Food</option>
+              <option value="Electricity">Electricity</option>
+              <option value="Rent">Rent</option>
+              <option value="Health">Health</option>
+              <option value="Entertainment">Entertaintment</option>
+              <option value="Food">Food</option>
             </Select>
             <HStack mt={10}>
               <Radio

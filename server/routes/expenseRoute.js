@@ -32,28 +32,25 @@ router.post("/create", async (req, res, next) => {
       description,
       amount,
     });
-
+    console.log(cat);
     // Increment the corresponding category in the user document
-    switch (cat) {
-      case "Electricity":
-        user.Electricity += amount;
-        break;
-      case "food":
-        user.food += amount;
-        break;
-      case "Health":
-        user.Health += amount;
-        break;
-      case "Rent":
-        user.Rent += amount;
-        break;
-      case "Entertainment":
-        user.Entertainment += amount;
-        break;
-      default:
-        // Handle the default case or error as needed
-        break;
+    if (cat === "Electricity") {
+      user.Electricity += 1;
+    } else if (cat === "Food") {
+      console.log("got in");
+      user.Food += 1; // Note the lowercase "food" here
+    } else if (cat === "Health") {
+      user.Health += 1;
+    } else if (cat === "Rent") {
+      user.Rent += 1;
+    } else if (cat === "Entertainment") {
+      user.Entertainment += 1;
+    } else {
+      // Handle the default case or error as needed
     }
+    
+
+    console.log(user.Food);
 
     user.expenses.push(newExpense);
 
