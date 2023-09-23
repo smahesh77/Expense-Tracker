@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Flex, Heading, Image, Input, Button } from '@chakra-ui/react';
+import { Container, Flex, Heading, Image, Input, Button, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
 const Signin = () => {
