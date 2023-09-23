@@ -10,10 +10,9 @@ const Sidebar = () => {
     
     return (
      
-        <VStack >
-            <Tabs  size='lg' isFitted orientation="vertical"   >
-                <TabList >
-                    <Tab>
+            <Tabs   align='center' size='lg'  orientation="vertical"  >
+                <TabList  >
+                    <Tab >
                         
                        <img src={dashboard}/>
                        <Text >&nbsp;Dashboard</Text>
@@ -27,15 +26,15 @@ const Sidebar = () => {
 
                     <Tab>
                       <img src={del}/>
-                      <Text>&nbsp;Bucket List</Text>
+                      <Text>Bucket List</Text>
                     </Tab>
           <Tab>
             <img src={profile}/>
-            <Text>&nbsp;Profile</Text>
+            <Text>Profile</Text>
           </Tab>
                 </TabList>
             </Tabs>
-        </VStack>
+      
         
            
     )
