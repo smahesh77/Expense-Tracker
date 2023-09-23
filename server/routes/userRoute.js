@@ -65,6 +65,24 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
+router.post("/getuserdata", async (req, res, next) => {
+    const { id } = req.body;
+  
+    try {
+      const user = await userModel.findById(id);
+  
+      if (!user) {
+        return res.json({ error: "User Doesn't Exist" });
+      }
+  
+      res.json({
+        user
+      });
+    } catch (err) {
+      next(err);
+    }
+  });
+
 // to check if the user is already logged in
 router.get("/logcheck", validateToken, (req, res) => {
   res.json(req.user);

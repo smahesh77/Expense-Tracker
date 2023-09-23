@@ -1,17 +1,26 @@
-import { Container, Flex, Heading, Image , Input , Button} from '@chakra-ui/react'
+
+import { Center, Flex } from '@chakra-ui/react'
 import './App.css'
 import Navbar from './Components/Navbar'
-import Profile from './pages/profile'
 import Sidebar from './Components/Sidebar'
+import Dashboard from './pages/Dashboard'
+import Signin from './pages/Signin'
+import TransactionsPage from './pages/TransactionsPage'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
 function App() {
- 
+
+
   return (
+  //test
+
     <div className="App">
-      <Navbar/>
-      <Flex direction='row'>
-        <Flex direction={'column'}><Sidebar/></Flex>
-        <Flex direction={'column'}><Profile/></Flex>
-        </Flex>
+
+      <Routes>
+        <Route path='/' element={<Signin></Signin>}></Route>
+        <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/transactions' element={<TransactionsPage></TransactionsPage>}></Route>
+      </Routes>
     </div>
   )
 }
