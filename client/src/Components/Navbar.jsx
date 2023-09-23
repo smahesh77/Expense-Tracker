@@ -17,6 +17,7 @@ const Navbar=()=>{
   </HStack>
 <HStack>
 <Select placeholder='Personal'>
+<option value='home'>Home</option>
 </Select>
 </HStack>
 <HStack>
