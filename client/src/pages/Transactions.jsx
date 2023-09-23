@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { HStack, VStack } from "@chakra-ui/react";
 import { Container, Text, Flex, Grid, GridItem } from "@chakra-ui/react";
 import { Input } from "@chakra-ui/react";
@@ -53,7 +53,7 @@ function Transactions() {
   const handleIncomeLocationChange = (value) => {
     setIncomeLocation(value);
   };
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formType === "expense") {
@@ -90,6 +90,8 @@ function Transactions() {
       });
     }
   };
+
+ 
   return (
     <Flex direction="row" justify="space-between" ml="250" mt="20">
       <Flex direction="column" justify="space-between">
