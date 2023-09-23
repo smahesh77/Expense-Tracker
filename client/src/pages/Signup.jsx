@@ -12,7 +12,8 @@ const Signup = () => {
                 <Flex h={400} w={300} bgColor={'purple.100'} borderRadius={15} alignItems={'center'} flexDirection={'column'} justifyContent={'center'}>
                     <Input variant='filled' placeholder='Enter email' w={250} mb={2} />
                     <Input variant='filled' placeholder='Enter password' w={250} mb={4}/>
-                    <Button bgColor={'purple.300'}>Sign In</Button>
+                    <Button bgColor={'purple.300'}>Sign Up</Button>
+                    <p>Have an account?</p>
                 </Flex>
             </Flex>
         </Flex>
