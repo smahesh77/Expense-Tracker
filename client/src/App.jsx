@@ -4,12 +4,17 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
 import Dashboard from './pages/Dashboard'
-import Bucketlist from './pages/Bucketlist'
+import Signin from './pages/Signin'
+import TransactionsPage from './pages/TransactionsPage'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
 function App() {
 
- return (
+
+  return (
+
     <div className="App">
-     //test
+
       <Routes>
         <Route path='/' element={<Signin></Signin>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
