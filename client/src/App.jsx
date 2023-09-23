@@ -1,10 +1,11 @@
-import Signin from "./pages/Signin"
 
+import './App.css'
+import Navbar from './Components/Navbar'
 function App() {
  
   return (
     <div className="App">
-      <Signin/>
+
     </div>
   )
 }
