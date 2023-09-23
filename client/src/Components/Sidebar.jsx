@@ -10,7 +10,7 @@ const Sidebar = () => {
     
     return (
      
-            <Tabs   align='center' size='lg'  orientation="vertical"  >
+            <Tabs   align='center' size='lg'  orientation="vertical">
                 <TabList  >
                     <Tab >
                         

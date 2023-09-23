@@ -1,24 +1,24 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 import Sidebar from '../Components/Sidebar'
-import { Container, Text, Flex } from '@chakra-ui/react'
+import { Container, Text, Flex ,Grid, GridItem} from '@chakra-ui/react'
 function Dashboard() {
   return (
-    <Flex flexDirection={'column'} bgColor={'purple.100'} w={900}>
-      <Flex flexDirection={'column'} w={500} bgColor={'blue.200'} >
-        <Flex flexDirection={'row'}>
-          <Container w={200} h={100} flexDirection={'column'} bgColor={'purple.300'} borderRadius={10} p={5}>
-            <Text>Your income</Text>
-            <Text>$17,000</Text>
-          </Container>
-          <Container w={200} h={100} flexDirection={'column'} bgColor={'purple.300'} borderRadius={10} p={5}>
-            <Text>Your expense</Text>
-            <Text>$7,000</Text>
-          </Container>
-        </Flex>
-        <Container w={350} h={250} bgColor={'green'} mt={10}>Stats</Container>
-      </Flex>
-    </Flex>
+    <Grid bgColor={'purple.100'}
+      h={'450'} w={1000} p={4} ml={4} mt={3}
+      templateRows='repeat(2, 1fr)'
+      templateColumns='repeat(5, 1fr)'
+      gap={4}
+      borderRadius={10}
+    >
+   
+      <GridItem colSpan={2} bg='white' borderRadius={10} h={120} w={200} >
+        
+      </GridItem>
+      <GridItem colSpan={2} bg='white' borderRadius={10} h={120} w={200}ml={-40}></GridItem>
+      <GridItem rowSpan={2} colSpan={1} bg='white'  borderRadius={10} w={220}></GridItem>
+      <GridItem colSpan={4}  bg='white'  borderRadius={10} h={250} w={400}></GridItem>
+    </Grid>
   )
 }
 
