@@ -1,10 +1,12 @@
-import Signup from '../pages/Signup'
+import Dashboard from './pages/Dashboard'
+import Navbar from './Components/Navbar'
 import './App.css'
 function App() {
  
   return (
     <div className="App">
-      <Signup/>
+      <Navbar/>
+      <Dashboard/>
     </div>
   )
 }
