@@ -2,7 +2,7 @@ import { Container, Flex, Heading, Image , Input , Button} from '@chakra-ui/reac
 
 const Signin = () => {
     return (
-        <Flex direction={'row'}>
+        <Flex direction={'row'} h={"100vh"} w={"100vw"} >
             <Flex direction={'column'} alignItems={'center'} justifyContent={'center'} w={'50vw'} h={'100vh'} bgColor={'purple.50'}>
                 <Container h={200} w={300}><Image src="src/assets/sign_up_image.jpg" ></Image></Container>
                 <Heading mb={3}>Welcome Back!</Heading>
