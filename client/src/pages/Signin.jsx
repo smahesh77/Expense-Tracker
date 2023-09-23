@@ -1,23 +1,42 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container, Flex, Heading, Image, Input, Button, Text } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import AuthContext from '../contexts/authContext';
+import apiClient from "../services/api-client";
 
 const Signin = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const {User, setUser} = useContext(AuthContext)
 
     const handleSignIn = () => {
-        // You can access the email and password values here
-        console.log('Email:', email);
-        console.log('Password:', password);
-
-        // Add your authentication logic here
-        // For example, you can send a POST request to your server with the email and password
-
-        // After successful authentication, navigate to the desired route
-        navigate('/home');
-    };
+        const data = { email: email, password: password };
+        apiClient
+          .post("/user/login", data)
+          .then((res) => {
+            if (res.data.error) {
+              alert(res.data.error);
+            } else {
+              alert("Login successful, welcome " + res.data.name);
+              localStorage.setItem("accessToken", res.data.token);
+              console.log(res.data)
+              setUser({
+                id: res.data.id,
+                name: res.data.name,
+                token: res.data.token,
+                balance:res.data.user.balance,
+                debt:res.data.user.debt,
+                status: true,
+                gmail:res.data.gmail
+              });
+              navigate("/home");
+            }
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      };
 
     return (
         <Flex direction={'row'} h={'100vh'} w={'100vw'}>
@@ -46,7 +65,7 @@ const Signin = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <Button bgColor={'purple.300'} onClick={handleSignIn}>Sign in</Button>
-                    <Text>New User?<Text col>Sign up.</Text></Text>
+                    <Text>New User?<Link color='blue' to='/signup'>Sign up.</Link></Text>
                 </Flex>
             </Flex>
         </Flex>

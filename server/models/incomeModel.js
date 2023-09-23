@@ -18,7 +18,7 @@ const incomeModel = db.model(
       },
       description: {
         type: String,
-        required: true,
+        
       },
       amount: {
         type: Number,

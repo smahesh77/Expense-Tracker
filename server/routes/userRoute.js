@@ -50,7 +50,7 @@ router.post("/login", async (req, res, next) => {
     }
 
     const accessToken = sign(
-      { email: user.email, id: user.id, name: user.name },
+      { email: user.email, id: user.id, name: user.name, user: user },
       "shhhhh its a secret"
     );
 
@@ -58,6 +58,7 @@ router.post("/login", async (req, res, next) => {
       token: accessToken,
       name: user.name,
       id: user.id,
+      user: user,
       gmail: user.email,
     });
   } catch (err) {
@@ -66,22 +67,22 @@ router.post("/login", async (req, res, next) => {
 });
 
 router.post("/getuserdata", async (req, res, next) => {
-    const { id } = req.body;
-  
-    try {
-      const user = await userModel.findById(id);
-  
-      if (!user) {
-        return res.json({ error: "User Doesn't Exist" });
-      }
-  
-      res.json({
-        user
-      });
-    } catch (err) {
-      next(err);
+  const { id } = req.body;
+
+  try {
+    const user = await userModel.findById(id);
+
+    if (!user) {
+      return res.json({ error: "User Doesn't Exist" });
     }
-  });
+
+    res.json({
+      user,
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 
 // to check if the user is already logged in
 router.get("/logcheck", validateToken, (req, res) => {

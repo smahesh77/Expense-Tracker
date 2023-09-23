@@ -7,6 +7,7 @@ import edit from '../assets/Note_Edit.svg'
 import del from '../assets/del_alt_fill.svg'
 import profile from '../assets/User_02.svg'
 import { useNavigate } from 'react-router-dom';
+import AuthContext from '../contexts/authContext';
 const Sidebar = () => {
   const navigate = useNavigate()
     
@@ -30,7 +31,7 @@ const Sidebar = () => {
                       <img src={del}/>
                       <Text>Bucket List</Text>
                     </Tab>
-          <Tab>
+          <Tab onClick={()=>navigate('/profile')}>
             <img src={profile}/>
             <Text>Profile</Text>
           </Tab>

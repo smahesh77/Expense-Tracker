@@ -8,6 +8,9 @@ const expenseModel = db.model(
         type: String,
         required: true,
       },
+      mode:{
+        type:String
+      },
       cat: {
         type: String,
         required: true,
@@ -18,7 +21,7 @@ const expenseModel = db.model(
       },
       description: {
         type: String,
-        required: true,
+        
       },
       amount: {
         type: Number,

@@ -2,17 +2,19 @@ import React, { ReactNode, useState } from "react";
 import AuthContext from "../contexts/authContext";
 
 
-const AuthProvider = ( children = ReactNode) => {
+const AuthProvider = ( props) => {
   const [User, setUser] = useState({
     id: "",
     name: "",
+    balance:0,
+    debt:0,
     token: null,
     gmail:"",
     status: false,
   });
   return (
     <AuthContext.Provider value={{ User, setUser }}>
-      {children}
+      {props.children}
     </AuthContext.Provider>
   );
 };

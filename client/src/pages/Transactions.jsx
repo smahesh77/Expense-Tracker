@@ -1,130 +1,207 @@
-import React, { useState } from 'react';
-import { HStack, VStack } from '@chakra-ui/react'
-import { Container, Text, Flex, Grid, GridItem } from '@chakra-ui/react'
-import { Input } from '@chakra-ui/react'
-import { Select } from '@chakra-ui/react'
-import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Radio, RadioGroup } from '@chakra-ui/react'
+import React, { useContext, useState } from "react";
+import { HStack, VStack } from "@chakra-ui/react";
+import { Container, Text, Flex, Grid, GridItem } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
+import { Select } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Radio, RadioGroup } from "@chakra-ui/react";
+import { useNavigate, Link } from "react-router-dom";
+import AuthContext from '../contexts/authContext';
+import apiClient from "../services/api-client";
 
 function Transactions() {
-    const [title, setTitle] = useState('');
-    const [price, setPrice] = useState('');
-    const [category, setCategory] = useState('');
-    const [location, setLocation] = useState('');
-    const [incomeTitle, setIncomeTitle] = useState('');
-  const [incomePrice, setIncomePrice] = useState('');
-  const [incomeCategory, setIncomeCategory] = useState('');
-  const [incomeLocation, setIncomeLocation] = useState('');
+  const [expenseTitle, setTitle] = useState("");
+  const [expensePrice, setPrice] = useState("");
+  const [expenseCategory, setCategory] = useState("");
+  const [expenseLocation, setLocation] = useState("");
+  const [incomeTitle, setIncomeTitle] = useState("");
+  const [formType, setFormType] = useState("");
+  const [incomePrice, setIncomePrice] = useState("");
+  const [incomeCategory, setIncomeCategory] = useState("");
+  const [incomeLocation, setIncomeLocation] = useState("");
 
-    // Event handlers to update state variables
-    const handleTitleChange = (e) => {
-        setTitle(e.target.value);
-    };
+  const{User} = useContext(AuthContext)
 
-    const handlePriceChange = (e) => {
-        setPrice(e.target.value);
-    };
+  // Event handlers to update state variables
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
 
-    const handleCategoryChange = (e) => {
-        setCategory(e.target.value);
-    };
+  const handlePriceChange = (e) => {
+    setPrice(e.target.value);
+  };
 
-    const handleLocationChange = (value) => {
-        setLocation(value);
-    };
-    const handleIncomeTitleChange = (e) => {
-        setIncomeTitle(e.target.value);
-      };
-    
-      const handleIncomePriceChange = (e) => {
-        setIncomePrice(e.target.value);
-      };
-    
-      const handleIncomeCategoryChange = (e) => {
-        setIncomeCategory(e.target.value);
-      };
-    
-      const handleIncomeLocationChange = (value) => {
-        setIncomeLocation(value);
-      };
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (formType === 'expense') {
-            console.log('Expense Title:', expenseTitle);
-            console.log('Expense Price:', expensePrice);
-            console.log('Expense Category:', expenseCategory);
-            console.log('Expense Location:', expenseLocation);
-          } else if (formType === 'income') {
-            console.log('Income Title:', incomeTitle);
-            console.log('Income Price:', incomePrice);
-            console.log('Income Category:', incomeCategory);
-            console.log('Income Location:', incomeLocation);
-          }
-    };
-    return (
-        <Flex direction='row' justify='space-between' ml='250' mt='20'>
-            <Flex direction='column' justify='space-between'>
-                <Text fontSize={'40px'}>Add Expenses</Text>
-                <form onSubmit={(e) => handleSubmit(e, 'expense')}>
-                    <Flex mt={6} direction='column' >
-                        <Input placeholder='Title' mb={10} onChange={handleTitleChange}></Input>
-                        <Input placeholder='Price' onChange={handlePriceChange}></Input>
-                        <Select placeholder='Category' mt={10} onChange={handleCategoryChange}>
-                            <option value='electricity'>Electricity</option>
-                            <option value='rent'>Rent</option>
-                            <option value='health'>Health</option>
-                            <option value='entertaintment'>Entertaintment</option>
-                            <option value='food'>Food</option>
-                        </Select>
-                        <HStack mt={10}>
-                            <Radio value='Home' mr={3} isChecked={location === 'Home'}
-                                onChange={() => handleLocationChange('Home')}>Home</Radio>
-                            <Radio value='Personal' isChecked={location === 'Personal'}
-                                onChange={() => handleLocationChange('Personal')}>Personal</Radio>
-                        </HStack>
-                        <Button mt={10} type='submit' bgColor={'purple.100'}>
-                            Add
-                        </Button>
-                    </Flex>
-                </form>
+  const handleLocationChange = (value) => {
+    setLocation(value);
+  };
+  const handleIncomeTitleChange = (e) => {
+    setIncomeTitle(e.target.value);
+  };
 
+  const handleIncomePriceChange = (e) => {
+    setIncomePrice(e.target.value);
+  };
 
+  const handleIncomeCategoryChange = (e) => {
+    setIncomeCategory(e.target.value);
+  };
 
+  const handleIncomeLocationChange = (value) => {
+    setIncomeLocation(value);
+  };
 
-            </Flex>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formType === "expense") {
+      console.log("Expense Title:", expenseTitle);
+      console.log("Expense Price:", expensePrice);
+      console.log("Expense Category:", expenseCategory);
+      console.log("Expense Location:", expenseLocation);
+      setTitle("");
+      setPrice("");
+      setCategory("");
+      const data = { name: expenseTitle, cat: expenseCategory, mode: expenseLocation,amount:parseInt(expensePrice), userId:User.id };
+      apiClient.post("/expense/create", data).then((res) => {
+        console.log("expense added");
+        console.log(res.data);
+      }).catch((err) => {
+        console.log(err);
+      });
+      setLocation("");
+    } else if (formType === "income") {
+      console.log("Income Title:", incomeTitle);
+      console.log("Income Price:", incomePrice);
+      console.log("Income Category:", incomeCategory);
+      console.log("Income Location:", incomeLocation);
+      setIncomeTitle("");
+      setIncomePrice("");
+      setIncomeCategory("");
+      setIncomeLocation("");
+      const data = { name: incomeTitle, cat: incomeCategory, mode: incomeLocation,amount:parseInt(incomePrice), userId:User.id };
+      apiClient.post("/income/create", data).then((res) => {
+        console.log("income added");
+        console.log(res.data);
+      }).catch((err) => {
+        console.log(err);
+      });
+    }
+  };
+  return (
+    <Flex direction="row" justify="space-between" ml="250" mt="20">
+      <Flex direction="column" justify="space-between">
+        <Text fontSize={"40px"}>Add Expenses</Text>
+        <form onSubmit={(e) => handleSubmit(e, "expense")}>
+          <Flex mt={6} direction="column">
+            <Input
+              placeholder="Title"
+              mb={10}
+              onChange={handleTitleChange}
+              value={expenseTitle}
+            ></Input>
+            <Input
+              placeholder="Price"
+              onChange={handlePriceChange}
+              value={expensePrice}
+            ></Input>
+            <Select
+              placeholder="Category"
+              mt={10}
+              onChange={handleCategoryChange}
+              value={expenseCategory}
+            >
+              <option value="electricity">Electricity</option>
+              <option value="rent">Rent</option>
+              <option value="health">Health</option>
+              <option value="entertaintment">Entertaintment</option>
+              <option value="food">Food</option>
+            </Select>
+            <HStack mt={10}>
+              <Radio
+                value="Home"
+                mr={3}
+                isChecked={expenseLocation === "Home"}
+                onChange={() => handleLocationChange("Home")}
+              >
+                Home
+              </Radio>
+              <Radio
+                value="Personal"
+                isChecked={expenseLocation === "Personal"}
+                onChange={() => handleLocationChange("Personal")}
+              >
+                Personal
+              </Radio>
+            </HStack>
+            <Button
+              mt={10}
+              type="submit"
+              bgColor={"purple.100"}
+              onClick={() => setFormType("expense")}
+            >
+              Add
+            </Button>
+          </Flex>
+        </form>
+      </Flex>
 
-            <Flex direction='column' justify='space-between' ml={80}>
-                <Text fontSize={'40px'}>Add Income</Text>
-                <form onSubmit={(e) => handleSubmit(e, 'income')}>
-                <Flex mt={6} direction='column' >
-                    <Input placeholder='Title' mb={10} onChange={handleIncomeTitleChange}></Input>
-                    <Input placeholder='Price' onChange={handleIncomePriceChange}></Input>
-                    <Select placeholder='Category' mt={10} onChange={handleIncomeCategoryChange}>
-                        <option value='bonus'>Bonus</option>
-                        <option value='salary'>Salary</option>
-
-                    </Select>
-                    <HStack mt={10}>
-                        <Radio value='Home' mr={3} isChecked={incomeLocation === 'Home'}
-                                onChange={() => handleIncomeLocationChange('Home')}>Home</Radio>
-                        <Radio value='Personal'  isChecked={incomeLocation === 'Personal'}
-                                onChange={() => handleIncomeLocationChange('Personal')}>Personal</Radio>
-                    </HStack>
-                    <Button mt={10} type='submit' bgColor={'purple.100'}>
-                        Add
-                    </Button>
-                </Flex>
-             
-
-          </form>
-
-            </Flex>
-
-
-
-        </Flex>
-    )
+      <Flex direction="column" justify="space-between" ml={80}>
+        <Text fontSize={"40px"}>Add Income</Text>
+        <form onSubmit={(e) => handleSubmit(e, "income")}>
+          <Flex mt={6} direction="column">
+            <Input
+              placeholder="Title"
+              mb={10}
+              onChange={handleIncomeTitleChange}
+              value={incomeTitle}
+            ></Input>
+            <Input
+              placeholder="Price"
+              onChange={handleIncomePriceChange}
+              value={incomePrice}
+            ></Input>
+            <Select
+              placeholder="Category"
+              mt={10}
+              onChange={handleIncomeCategoryChange}
+              value={expenseCategory}
+            >
+              <option value="bonus">Bonus</option>
+              <option value="salary">Salary</option>
+            </Select>
+            <HStack mt={10}>
+              <Radio
+                value="Home"
+                mr={3}
+                isChecked={incomeLocation === "Home"}
+                onChange={() => handleIncomeLocationChange("Home")}
+              >
+                Home
+              </Radio>
+              <Radio
+                value="Personal"
+                isChecked={incomeLocation === "Personal"}
+                onChange={() => handleIncomeLocationChange("Personal")}
+              >
+                Personal
+              </Radio>
+            </HStack>
+            <Button
+              mt={10}
+              type="submit"
+              bgColor={"purple.100"}
+              onClick={() => setFormType("income")}
+            >
+              Add
+            </Button>
+          </Flex>
+        </form>
+      </Flex>
+    </Flex>
+  );
 }
 
-export default Transactions
+export default Transactions;

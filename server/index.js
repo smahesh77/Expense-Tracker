@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const db = require('./config/db')
 const userRouter = require('./routes/userRoute')
 const expenseRouter = require('./routes/expenseRoute')
 const incomeRouter = require('./routes/incomeRoute')
