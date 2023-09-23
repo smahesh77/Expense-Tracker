@@ -8,8 +8,8 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import { HStack, VStack } from '@chakra-ui/react'
 const Navbar = () => {
   return (
-    <Flex direction='row' justify='space-between'>
-      <HStack align='flex-start' >
+    <Flex direction='row' justify='space-evenly' mt='10' >
+      <HStack   >
         <Text mr='4' fontSize='30' fontWeight="bold">
           Hello Jordan
         </Text>
