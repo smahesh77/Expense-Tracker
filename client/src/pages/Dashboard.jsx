@@ -53,7 +53,7 @@ function Dashboard() {
   }, []);
   let items = [
     { id: "1", title: "Pizza", price: "20", category: "Food" },
-    { id: "2", title: "House Bills", price: "60", category: "Rent" }
+    { id: "2", title: "Bills", price: "60", category: "Electricity" }
   ];
   return (
     <Grid
