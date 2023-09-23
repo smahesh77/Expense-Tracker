@@ -5,6 +5,7 @@ import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
 import Dashboard from './pages/Dashboard'
 import Bucketlist from './pages/Bucketlist'
+import Transactions from './pages/Transactions'
 function App() {
 
   return (
@@ -12,7 +13,7 @@ function App() {
       <Navbar />
       <Flex>
         <Sidebar />
-        <Bucketlist />
+        <Dashboard/>
       </Flex>
     </div>
   )

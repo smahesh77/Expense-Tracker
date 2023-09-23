@@ -23,7 +23,7 @@ function Dashboard() {
       ],
     };
   return (
-    <Grid bgColor={'purple.100'}
+    <Grid bgColor={'purple.50'}
       h={'450'} w={1000} p={4} ml={4} mt={3}
       templateRows='repeat(2, 1fr)'
       templateColumns='repeat(5, 1fr)'
