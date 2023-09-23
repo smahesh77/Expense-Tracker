@@ -4,16 +4,17 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
 import Dashboard from './pages/Dashboard'
-import Transactions from './pages/Transactions'
+import Bucketlist from './pages/Bucketlist'
 function App() {
 
-  return (
+ return (
     <div className="App">
-      <Navbar />
-      <Flex>
-        <Sidebar />
-      <Transactions/>
-      </Flex>
+     //test
+      <Routes>
+        <Route path='/' element={<Signin></Signin>}></Route>
+        <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/transactions' element={<TransactionsPage></TransactionsPage>}></Route>
+      </Routes>
     </div>
   )
 }

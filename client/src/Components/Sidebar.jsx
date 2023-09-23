@@ -6,22 +6,24 @@ import dashboard from '../assets/More_Grid_Big.svg'
 import edit from '../assets/Note_Edit.svg'
 import del from '../assets/del_alt_fill.svg'
 import profile from '../assets/User_02.svg'
+import { useNavigate } from 'react-router-dom';
 const Sidebar = () => {
+  const navigate = useNavigate()
     
     return (
      
             <Tabs   align='center' size='lg'  orientation="vertical">
                 <TabList  >
-                    <Tab >
+                    <Tab  onClick={()=>navigate('/home')}>
                         
                        <img src={dashboard}/>
-                       <Text >&nbsp;Dashboard</Text>
+                       <Text>&nbsp;Dashboard</Text>
                       
                        
                     </Tab>
-                    <Tab>
+                    <Tab onClick={()=>navigate('/transactions')}>
                      <img src={edit}/>
-                     <Text>&nbsp;Transactions</Text>
+                     <Text >&nbsp;Transactions</Text>
                     </Tab>
 
                     <Tab>
