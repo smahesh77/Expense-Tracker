@@ -4,19 +4,16 @@ import './App.css'
 import Navbar from './Components/Navbar'
 import Sidebar from './Components/Sidebar'
 import Dashboard from './pages/Dashboard'
-import Signin from './pages/Signin'
-import TransactionsPage from './pages/TransactionsPage'
-import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
+import Bucketlist from './pages/Bucketlist'
 function App() {
 
   return (
     <div className="App">
-      <Routes>
-        <Route path='/' element={<Signin></Signin>}></Route>
-        <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/transactions' element={<TransactionsPage></TransactionsPage>}></Route>
-      </Routes>
+      <Navbar />
+      <Flex>
+        <Sidebar />
+        <Bucketlist />
+      </Flex>
     </div>
   )
 }
