@@ -185,7 +185,7 @@ function Transactions() {
             >
               <option value="bonus">Bonus</option>
               <option value="salary">Salary</option>
-            </Select>
+            </Select> {/*malmc*/}
             <HStack mt={10}>
               <Radio
                 value="Home"
