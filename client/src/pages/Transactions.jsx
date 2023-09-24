@@ -65,7 +65,7 @@ function Transactions() {
   const handleIncomeLocationChange = (value) => {
     setIncomeLocation(value);
   };
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formType === "expense") {
@@ -102,10 +102,12 @@ function Transactions() {
       });
     }
   };
+
+ 
   return (
-    <Flex direction="row" justify="space-between" ml="250" mt="20">
+    <Flex direction="row" justify="space-between" ml="160" mt="8">
       <Flex direction="column" justify="space-between">
-        <Text fontSize={"40px"}>Add Expenses</Text>
+        <Text fontSize={"35px"}>Add Expenses</Text>
         <form onSubmit={(e) => handleSubmit(e, "expense")}>
           <Flex mt={6} direction="column">
             <Input
@@ -159,9 +161,9 @@ function Transactions() {
           </Flex>
         </form>
       </Flex>
-
-      <Flex direction="column" justify="space-between" ml={80}>
-        <Text fontSize={"40px"}>Add Income</Text>
+      <Flex w={1} bgColor={'purple.100'} ml={150} borderRadius={10}></Flex>
+      <Flex direction="column" justify="space-between" ml={40}>
+        <Text fontSize={"35px"}>Add Income</Text>
         <form onSubmit={(e) => handleSubmit(e, "income")}>
           <Flex mt={6} direction="column">
             <Input
@@ -183,7 +185,7 @@ function Transactions() {
             >
               <option value="bonus">Bonus</option>
               <option value="salary">Salary</option>
-            </Select>
+            </Select> {/*malmc*/}
             <HStack mt={10}>
               <Radio
                 value="Home"
