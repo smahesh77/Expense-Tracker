@@ -163,7 +163,7 @@ function Transactions() {
       </Flex>
       <Flex w={1} bgColor={'purple.100'} ml={150} borderRadius={10}></Flex>
       <Flex direction="column" justify="space-between" ml={40}>
-        <Text fontSize={"40px"}>Add Income</Text>
+        <Text fontSize={"35px"}>Add Income</Text>
         <form onSubmit={(e) => handleSubmit(e, "income")}>
           <Flex mt={6} direction="column">
             <Input
