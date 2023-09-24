@@ -37,7 +37,6 @@ const Signup = () => {
         justifyContent={"center"}
         w={"50vw"}
         h={"100vh"}
-        bgColor={"purple.50"}
       >
         <Container h={200} w={300}>
           <Image src="src/assets/sign_up_image.jpg" />
@@ -90,10 +89,11 @@ const Signup = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button bgColor={"purple.300"} onClick={handleSignUp}>
+          <Button bgColor={"purple.300"} onClick={handleSignUp} mb={3}>
             Sign Up
           </Button>
-          <Text>Have an account?<Link to='/'>Sign in</Link></Text>
+          <Text>Have an account?</Text>
+          <Text color={'purple.500'} fontWeight={'semibold'}><Link to='/' >Sign in</Link></Text>
         </Flex>
       </Flex>
     </Flex>

@@ -40,7 +40,7 @@ const Signin = () => {
 
     return (
         <Flex direction={'row'} h={'100vh'} w={'100vw'}>
-            <Flex direction={'column'} alignItems={'center'} justifyContent={'center'} w={'50vw'} h={'100vh'} bgColor={'purple.50'}>
+            <Flex direction={'column'} alignItems={'center'} justifyContent={'center'} w={'50vw'} h={'100vh'} >
                 <Container h={200} w={300}><Image src="src/assets/sign_up_image.jpg" /></Container>
                 <Heading mb={3}>Welcome Back!</Heading>
                 <p text-align="center">To keep connected with us, please enter your personal details</p>
@@ -64,8 +64,9 @@ const Signin = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <Button bgColor={'purple.300'} onClick={handleSignIn}>Sign in</Button>
-                    <Text>New User?<Link color='blue' to='/signup'>Sign up.</Link></Text>
+                    <Button bgColor={'purple.300'} onClick={handleSignIn} mb={3}>Sign in</Button>
+                    <Text>New User?</Text>
+                    <Text color={'purple.500'} fontWeight={'semibold'}><Link color='blue' to='/signup'>Sign up.</Link></Text>
                 </Flex>
             </Flex>
         </Flex>
