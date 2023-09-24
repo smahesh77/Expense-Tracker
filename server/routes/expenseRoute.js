@@ -62,6 +62,30 @@ router.post("/create", async (req, res, next) => {
   }
 });
 
+router.post("/gettopexpenses", async (req, res, next) => {
+  const { userid } = req.body;
+
+  try {
+    // Find the user by their ID
+    const user = await userModel.findById(userid);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Get the user's expenses
+    const expenseIds = user.expenses;
+    const userExpenses = await expenseModel
+      .find({ _id: { $in: expenseIds } })
+      .sort({ createdAt: -1 }) // Sort by createdAt in descending order
+      .limit(5); // Limit to 5 results
+
+    res.json({ recentTransactions: userExpenses });
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 // get user expenses
 router.post("/getuserexpens", async (req, res, next) => {
