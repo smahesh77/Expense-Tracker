@@ -50,6 +50,7 @@ function Dashboard() {
           ...User,
           balance: res.data.user.balance,
           debt: res.data.user.debt,
+          exp:res.data.user.exp,
           status: true,
           gmail: res.data.gmail,
         });
@@ -69,7 +70,10 @@ function Dashboard() {
       .catch((err) => {
         console.log(err);
       });
-  }, [isLoading]);
+
+  },[]);
+
+
 
   return (
     <Grid
@@ -99,7 +103,7 @@ function Dashboard() {
         </Text>
         <Flex direction={"row"}>
           <Text>${User.balance}</Text>
-          <IoIosArrowRoundUp size={25} />
+          {User.balance>0?<IoIosArrowRoundUp size={25} />:<IoIosArrowRoundDown size={25} />}
         </Flex>
       </GridItem>
       <GridItem
@@ -118,7 +122,9 @@ function Dashboard() {
           Your expense
         </Text>
         <Flex direction={"row"}>
-          <Text>$7,000</Text>
+
+          <Text>{User.exp}</Text>
+
           <IoIosArrowRoundDown size={25} />
         </Flex>
       </GridItem>

@@ -25,6 +25,7 @@ const Signin = () => {
                 id: res.data.id,
                 name: res.data.name,
                 token: res.data.token,
+                exp:res.data.user.exp,
                 balance:res.data.user.balance,
                 debt:res.data.user.debt,
                 status: true,

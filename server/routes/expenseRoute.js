@@ -15,6 +15,8 @@ router.post("/create", async (req, res, next) => {
       return res.status(404).json({ error: "User not found" });
     }
 
+    const newExp = user.exp + amount;
+
     const newBalance = user.balance - amount;
 
     const newDebt = newBalance < 0 ? Math.abs(newBalance) : 0;
@@ -23,6 +25,7 @@ router.post("/create", async (req, res, next) => {
     user.set({
       balance: newBalance,
       debt: newDebt,
+      exp:newExp
     });
 
     const newExpense = new expenseModel({
@@ -35,16 +38,16 @@ router.post("/create", async (req, res, next) => {
     console.log(cat);
     // Increment the corresponding category in the user document
     if (cat === "Electricity") {
-      user.Electricity += 1;
+      user.Electricity += amount;
     } else if (cat === "Food") {
       console.log("got in");
-      user.Food += 1; // Note the lowercase "food" here
+      user.Food += amount; // Note the lowercase "food" here
     } else if (cat === "Health") {
-      user.Health += 1;
+      user.Health += amount;
     } else if (cat === "Rent") {
-      user.Rent += 1;
+      user.Rent += amount;
     } else if (cat === "Entertainment") {
-      user.Entertainment += 1;
+      user.Entertainment += amount;
     } else {
       // Handle the default case or error as needed
     }

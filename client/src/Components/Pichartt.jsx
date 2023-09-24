@@ -11,7 +11,7 @@ function Pichartt() {
   
     useEffect(() => {
       // Simulate fetching data with a setTimeout (replace this with your data fetching logic)
-      const data = {id:"650f57105a2e38b73824d878"}
+      const data = {id:User.id}
       apiClient.post("/user/getusercats", data).then((res) => {
         
         console.log(res.data);
