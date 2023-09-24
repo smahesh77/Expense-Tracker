@@ -99,7 +99,7 @@ router.post("/getusercats", async (req, res, next) => {
       Rent:user.Rent,
       Food:user.Food,
       Health:user.Health,
-      Entertaintment:user.Entertaintment
+      Entertainment:user.Entertaintment
     });
   } catch (err) {
     next(err);
