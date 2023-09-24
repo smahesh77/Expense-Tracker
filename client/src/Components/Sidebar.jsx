@@ -26,11 +26,11 @@ const Sidebar = () => {
                     <Text >&nbsp;Transactions</Text>
                 </Tab>
 
-                <Tab flexDirection={'row'} justifyContent={'space-between'} w={150} gap={1}>
+                <Tab onClick={() => navigate('/analysis')} flexDirection={'row'} justifyContent={'space-between'} w={150} gap={1}>
                     <img src={pie}/>
                     <Text mr={10}>Analysis</Text>
                 </Tab>
-                <Tab onClick={() => navigate('/profilepage')} flexDirection={'row'} justifyContent={'space-between'} w={150} >
+                <Tab onClick={() => navigate('/profilepage')} flexDirection={'row'} justifyContent={'space-between'} w={150}>
                     <img src={profile} />
                     <Text  mr={33}>Profile</Text>
                 </Tab>

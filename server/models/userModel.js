@@ -61,6 +61,11 @@ const userModel = db.model(
         default: 0, 
         required: true,
       },
+      exp: {
+        type: Number,
+        default: 0, 
+        required: true,
+      },
       debt :{
         type: Number,
         default: 0, 

@@ -8,6 +8,7 @@ const AuthProvider = ( props) => {
     name: "",
     balance:0,
     debt:0,
+    exp:0,
     token: null,
     gmail:"",
     status: false,
