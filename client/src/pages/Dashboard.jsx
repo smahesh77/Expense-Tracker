@@ -70,7 +70,10 @@ function Dashboard() {
       .catch((err) => {
         console.log(err);
       });
+
   },[]);
+
+
 
   return (
     <Grid
@@ -119,7 +122,9 @@ function Dashboard() {
           Your expense
         </Text>
         <Flex direction={"row"}>
+
           <Text>{User.exp}</Text>
+
           <IoIosArrowRoundDown size={25} />
         </Flex>
       </GridItem>
