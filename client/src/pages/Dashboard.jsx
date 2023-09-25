@@ -77,10 +77,11 @@ function Dashboard() {
 
   return (
     <Grid
-      h={"450"}
-      w={1000}
+      h={'80vh'} 
+      w={'83vw'}
       p={4}
-      ml={4}
+      ml={5}
+      bgColor={'purple.50'}
       mt={3}
       templateRows="repeat(2, 1fr)"
       templateColumns="repeat(5, 1fr)"
@@ -140,7 +141,7 @@ function Dashboard() {
         p={4}
         boxShadow={"9px 9px 18px #e6e6e6,-9px -9px 18px #ffffff"}
       >
-        
+        <Text mb={3} fontSize={24} fontWeight={'semibold'}>Recent Transactions</Text>
 
          { items.map((i) => 
             <Itembox
@@ -154,10 +155,10 @@ function Dashboard() {
       <GridItem
         colSpan={4}
         bg="white"
-        p={3}
+        p={5}
         borderRadius={10}
         h={250}
-        w={450}
+        w={500}
         boxShadow={"9px 9px 18px #e6e6e6,-9px -9px 18px #ffffff"}
       >
         <Bar data={data} />
