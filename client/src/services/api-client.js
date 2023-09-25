@@ -2,7 +2,7 @@
 import axios, { CanceledError } from 'axios';
 
 export default axios.create({
-  baseURL: 'http://localhost:4001',
+  baseURL: 'https://expense-tracker-fm4t.onrender.com',
 })
 
 export { CanceledError };
