@@ -52,7 +52,7 @@ const userModel = db.model(
         default: 0,
       },
       
-      Entertaintment:{
+      Entertainment:{
         type: Number,
         default: 0,
       },
