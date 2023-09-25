@@ -27,7 +27,7 @@ function Pichartt() {
             };
             setChartData(piedata);
             setDataLoaded(true);
-          }, 2000); 
+          }, 1000); 
       }).catch((err) => {
         console.log(err);
       });

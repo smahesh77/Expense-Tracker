@@ -20,7 +20,7 @@ const Itembox = (props) => {
       }
   
     return (
-      <Flex bgColor={'purple.50'} h={'70px'} w={250} mb={2} borderRadius={10} flexDirection={'row'} alignItems={'center'} p={5}>
+      <Flex bgColor={'purple.50'} h={'70px'} w={300} mb={4} borderRadius={10} flexDirection={'row'} alignItems={'center'} p={5} border={'2px solid'} borderColor={'purple.100'}>
         {categoryIcon}
         <Flex direction={'column'} ml={7}>
           <Text mb={1} w={'max-content'} >{props.title}</Text>

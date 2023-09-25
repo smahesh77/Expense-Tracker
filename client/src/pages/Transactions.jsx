@@ -112,12 +112,14 @@ function Transactions() {
           <Flex mt={6} direction="column">
             <Input
               placeholder="Title"
+              focusBorderColor='purple.300'
               mb={10}
               onChange={handleTitleChange}
               value={expenseTitle}
             ></Input>
             <Input
               placeholder="Price"
+              focusBorderColor='purple.300'
               onChange={handlePriceChange}
               value={expensePrice}
             ></Input>
@@ -153,7 +155,7 @@ function Transactions() {
             <Button
               mt={10}
               type="submit"
-              bgColor={"purple.100"}
+              colorScheme="purple"
               onClick={() => setFormType("expense")}
             >
               Add
@@ -168,12 +170,14 @@ function Transactions() {
           <Flex mt={6} direction="column">
             <Input
               placeholder="Title"
+              focusBorderColor='purple.300'
               mb={10}
               onChange={handleIncomeTitleChange}
               value={incomeTitle}
             ></Input>
             <Input
               placeholder="Price"
+              focusBorderColor='purple.300'
               onChange={handleIncomePriceChange}
               value={incomePrice}
             ></Input>
@@ -206,7 +210,7 @@ function Transactions() {
             <Button
               mt={10}
               type="submit"
-              bgColor={"purple.100"}
+              colorScheme="purple"
               onClick={() => setFormType("income")}
             >
               Add

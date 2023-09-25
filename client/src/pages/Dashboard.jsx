@@ -5,7 +5,11 @@ import {
   Flex,
   Grid,
   GridItem,
-  Box,
+  Tabs,
+  TabList,
+  TabPanel,
+  Tab,
+  TabPanels
 } from "@chakra-ui/react";
 import Itembox from "../Components/Itembox";
 import { IoIosArrowRoundUp, IoIosArrowRoundDown } from "react-icons/io";
@@ -17,9 +21,42 @@ import apiClient from "../services/api-client";
 
 function Dashboard() {
   const navigate = useNavigate();
-  const labels = ["January", "February", "March", "April", "May", "June"];
-  const data = {
-    labels: labels,
+  const data1 = {
+    labels: ["Sun","Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    datasets: [
+      {
+        label: "Income",
+        backgroundColor: "rgb(92, 89, 240)",
+        borderColor: "rgb(255, 99, 132)",
+        data: [0, 10, 5, 2, 20, 30, 45],
+      },
+      {
+        label: "Expense",
+        backgroundColor: "rgb(165, 166, 246)",
+        borderColor: "rgb(255, 99, 132)",
+        data: [0, -10, -5, -2, -20, -30, -45],
+      },
+    ],
+  };
+  const data2 = {
+    labels: ["Jan","Feb","March","April","May","June","July","Aug","Sept","Oct","Nov","Dec"],
+    datasets: [
+      {
+        label: "Income",
+        backgroundColor: "rgb(92, 89, 240)",
+        borderColor: "rgb(255, 99, 132)",
+        data: [0, 10, 5, 2, 20, 30, 45],
+      },
+      {
+        label: "Expense",
+        backgroundColor: "rgb(165, 166, 246)",
+        borderColor: "rgb(255, 99, 132)",
+        data: [0, -10, -5, -2, -20, -30, -45],
+      },
+    ],
+  };
+  const data3 = {
+    labels: ["2019","2020","2021","2022"],
     datasets: [
       {
         label: "Income",
@@ -50,7 +87,7 @@ function Dashboard() {
           ...User,
           balance: res.data.user.balance,
           debt: res.data.user.debt,
-          exp:res.data.user.exp,
+          exp: res.data.user.exp,
           status: true,
           gmail: res.data.gmail,
         });
@@ -71,13 +108,13 @@ function Dashboard() {
         console.log(err);
       });
 
-  },[]);
+  }, []);
 
 
 
   return (
     <Grid
-      h={'80vh'} 
+      h={'80vh'}
       w={'83vw'}
       p={4}
       ml={5}
@@ -104,7 +141,7 @@ function Dashboard() {
         </Text>
         <Flex direction={"row"}>
           <Text>${User.balance}</Text>
-          {User.balance>0?<IoIosArrowRoundUp size={25} />:<IoIosArrowRoundDown size={25} />}
+          {User.balance > 0 ? <IoIosArrowRoundUp size={25} /> : <IoIosArrowRoundDown size={25} />}
         </Flex>
       </GridItem>
       <GridItem
@@ -124,7 +161,7 @@ function Dashboard() {
         </Text>
         <Flex direction={"row"}>
 
-          <Text>{User.exp}</Text>
+          <Text>${User.exp}</Text>
 
           <IoIosArrowRoundDown size={25} />
         </Flex>
@@ -134,7 +171,7 @@ function Dashboard() {
         colSpan={1}
         bg="white"
         borderRadius={10}
-        w={350}
+        w={450}
         flexDirection={"column"}
         align={"center"}
         justifyContent={"center"}
@@ -143,25 +180,42 @@ function Dashboard() {
       >
         <Text mb={3} fontSize={24} fontWeight={'semibold'}>Recent Transactions</Text>
 
-         { items.map((i) => 
-            <Itembox
-              title={i.name}
-              price={i.amount}
-              category={i.cat}
-              key={i._id}
-            />
-          )}
+        {items.map((i) =>
+          <Itembox
+            title={i.name}
+            price={i.amount}
+            category={i.cat}
+            key={i._id}
+          />
+        )}
       </GridItem>
       <GridItem
         colSpan={4}
         bg="white"
         p={5}
         borderRadius={10}
-        h={250}
+        h={300}
         w={500}
         boxShadow={"9px 9px 18px #e6e6e6,-9px -9px 18px #ffffff"}
       >
-        <Bar data={data} />
+        <Tabs variant='soft-rounded' colorScheme='purple'>
+          <TabList justifyContent={'space-evenly'}>
+            <Tab>Weekly</Tab>
+            <Tab>Monthly</Tab>
+            <Tab>Yearly</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <Bar data={data1} />
+            </TabPanel>
+            <TabPanel>
+              <Bar data={data2} />
+            </TabPanel>
+            <TabPanel>
+              <Bar data={data3} />
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </GridItem>
     </Grid>
   );

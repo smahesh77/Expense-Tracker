@@ -55,7 +55,7 @@ const Navbar = () => {
   };
 
   return (
-    <Flex direction="row" justify="space-evenly" mt="10">
+    <Flex direction="row" justify="space-evenly" mt="10" >
       <HStack>
         <Text mr="4" fontSize="30" fontWeight="bold">
           Hello {User.name}
@@ -69,7 +69,7 @@ const Navbar = () => {
       </HStack>
       <HStack>
         <img src={women} width={45} />
-        <Button bgColor={"purple.300"} Color={"white"} onClick={signOut}>
+        <Button bgColor={"purple.300"} Color={"white"} onClick={signOut} colorScheme="purple">
           Logout
         </Button>
       </HStack>

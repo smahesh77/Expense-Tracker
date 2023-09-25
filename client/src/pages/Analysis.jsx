@@ -38,7 +38,7 @@ const Analysis = () => {
         justifyContent={"center"}
         p={4}
         minH={'75vh'}
-        boxShadow={"9px 9px 18px #e6e6e6,-9px -9px 18px #ffffff"}
+        
         overflowY="auto"
         sx={
           { 
