@@ -3,7 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Container, Flex, Text, Center } from "@chakra-ui/react";
 import wavehand from "../assets/Waving Hand.svg";
 import { Select } from "@chakra-ui/react";
-import women from "../assets/People.svg";
+//import women from "../assets/People.svg";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import { HStack, VStack } from "@chakra-ui/react";
 import AuthContext from "../contexts/authContext";
@@ -68,7 +68,7 @@ const Navbar = () => {
         </Select>
       </HStack>
       <HStack>
-        <img src={women} width={45} />
+{/*         <img src={women} width={45} /> */}
         <Button bgColor={"purple.300"} Color={"white"} onClick={signOut} colorScheme="purple">
           Logout
         </Button>
